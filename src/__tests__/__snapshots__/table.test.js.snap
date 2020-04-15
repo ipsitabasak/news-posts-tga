@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`table component works correctly 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+      "justifyContent": "center",
+    }
+  }
+>
+  <ul
+    style={
+      Object {
+        "backgroundColor": "#F6F6EF",
+        "maxWidth": "1440px",
+        "padding": "0",
+      }
+    }
+  >
+    <li
+      className="header"
+      style={
+        Object {
+          "backgroundColor": "#ff6600",
+          "display": "inline-block",
+          "height": "30px",
+          "marginBottom": "10px",
+          "textAlign": "left",
+          "width": "100%",
+        }
+      }
+    >
+      <a>
+        Y 
+      </a>
+      <button
+        onClick={undefined}
+        style={
+          Object {
+            "background": "none",
+            "border": "none",
+          }
+        }
+      >
+        top
+      </button>
+      <button
+        onClick={undefined}
+        style={
+          Object {
+            "background": "none",
+            "border": "none",
+          }
+        }
+      >
+        new
+      </button>
+    </li>
+    <li
+      className="footer"
+      style={
+        Object {
+          "display": "inline-block",
+          "height": "30px",
+          "textAlign": "left",
+          "width": "100%",
+        }
+      }
+    >
+      <button
+        onClick={undefined}
+      >
+        MORE
+      </button>
+    </li>
+  </ul>
+</div>
+`;
