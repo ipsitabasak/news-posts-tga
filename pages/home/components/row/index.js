@@ -29,14 +29,14 @@ const Row = props => {
       <button onClick={onTopClick} style={buttonStyle}>top</button>
       <button onClick={onNewClick} style={buttonStyle}>new</button>
   </li>);
-  const rows = hits.map((hit, index) => {
+  const rows = hits && hits.map((hit, index) => {
     const rowStyle = index%2 ? style1: style2;
     return (
       <li style={rowStyle} key={`row_${index}`} >
         <Cell hit={ hit } />
       </li>
     )
-  });
+  }) || [];
 
   const moreFooter = (
     <li key='moreFooter' className="footer" style={{...styles, height: '30px'}}>
