@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const isClient = () => {
   return typeof window !== 'undefined';
 }
