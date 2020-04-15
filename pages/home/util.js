@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const isClient = () => {
+const isClient = () => {
   return typeof window !== 'undefined';
 }
 
@@ -27,3 +27,5 @@ export const updateUpVoteCount = (objectId, newCount) => {
   }
   isClient() && window.localStorage.setItem('upVoteCount', updatedUpVoteCountList);
 }
+
+export default isClient;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { isClient, getUpVoteCount, updateUpVoteCount } from '../../util';
+import isClient, { getUpVoteCount, updateUpVoteCount } from '../../util';
 
 const getAllHiddenItems = () => {
   const hiddenIds = isClient() && window.localStorage.getItem('hiddenRowIds') || '';
