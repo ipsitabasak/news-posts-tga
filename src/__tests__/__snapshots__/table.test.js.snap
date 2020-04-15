@@ -2,78 +2,118 @@
 
 exports[`table component works correctly 1`] = `
 <div
-  style={
-    Object {
-      "display": "flex",
-      "justifyContent": "center",
-    }
-  }
+  className="container"
 >
-  <ul
-    style={
-      Object {
-        "backgroundColor": "#F6F6EF",
-        "maxWidth": "1440px",
-        "padding": "0",
-      }
-    }
-  >
+  <ul>
     <li
       className="header"
-      style={
-        Object {
-          "backgroundColor": "#ff6600",
-          "display": "inline-block",
-          "height": "30px",
-          "marginBottom": "10px",
-          "textAlign": "left",
-          "width": "100%",
-        }
-      }
     >
-      <a>
-        Y 
-      </a>
-      <button
-        onClick={undefined}
+      <a
+        className="title"
+        href="/"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
         style={
           Object {
-            "background": "none",
-            "border": "none",
+            "borderColor": "black",
+            "color": "black",
+            "textDecoration": "none",
+          }
+        }
+      >
+        Y
+      </a>
+      <a
+        className="title-spacing"
+        href="/top"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        style={
+          Object {
+            "borderColor": "black",
+            "color": "black",
+            "textDecoration": "none",
           }
         }
       >
         top
-      </button>
-      <button
-        onClick={undefined}
+      </a>
+      <span>
+        |
+      </span>
+      <a
+        className="title-spacing"
+        href="/new"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
         style={
           Object {
-            "background": "none",
-            "border": "none",
+            "borderColor": "black",
+            "color": "black",
+            "textDecoration": "none",
           }
         }
       >
         new
-      </button>
+      </a>
     </li>
     <li
       className="footer"
-      style={
-        Object {
-          "display": "inline-block",
-          "height": "30px",
-          "textAlign": "left",
-          "width": "100%",
-        }
-      }
     >
       <button
+        className="more-button"
         onClick={undefined}
       >
         MORE
       </button>
     </li>
   </ul>
+  <style
+    jsx={true}
+  >
+    
+            .title {
+              padding: 5px;
+              display: inline-block;
+              border: 1px solid white;
+              margin: 3px 5px 0 5px;
+              font-size: 10px;
+            }
+            .title-spacing {
+              padding: 0 10px;
+            }
+            .container {
+              display: flex;
+              justify-content: center;
+              font-family: Arial;
+              letter-spacing: 0.2px;
+            }
+            ul {
+              background-color: #F6F6EF;
+              max-width: 1440px;
+              padding: 0;
+            }
+            .header {
+              display: inline-block;
+              width: 100%;
+              text-align: left;
+              height: 30px;
+              margin-bottom: 10px;
+              background-color: #ff6600;
+              font-size: 12px;
+            }
+            .footer {
+              display: inline-block;
+              width: 100%;
+              text-align: left;
+              height: 30px;
+            }
+            .more-button {
+              background: none;
+              border: none;
+              margin-left: 120px;
+            }
+          
+  </style>
 </div>
 `;

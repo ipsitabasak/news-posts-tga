@@ -5,7 +5,7 @@ const isClient = () => {
 }
 
 export const getUpVoteCount = objectID => {
-  const upvoteCountList = isClient() && window.localStorage.getItem('upVoteCount') || '';
+  const upvoteCountList = isClient() && window.localStorage && window.localStorage.getItem('upVoteCount') || '';
   const upVoteCount = upvoteCountList.split(objectID);
   let count = 0;
   if(upVoteCount.length > 1 && upVoteCount[1][0] === '&') {
@@ -15,7 +15,7 @@ export const getUpVoteCount = objectID => {
 }
 
 export const updateUpVoteCount = (objectId, newCount) => {
-  const upVoteCountList = isClient() && window.localStorage.getItem('upVoteCount');
+  const upVoteCountList = isClient() && window.localStorage && window.localStorage.getItem('upVoteCount');
   const upVoteCount = getUpVoteCount(objectId);
   console.log('upVoteCount', upVoteCount);
   console.log('newCount', newCount);
@@ -27,5 +27,25 @@ export const updateUpVoteCount = (objectId, newCount) => {
   }
   isClient() && window.localStorage.setItem('upVoteCount', updatedUpVoteCountList);
 }
+
+export const getAllHiddenItems = () => {
+  const hiddenIds = isClient() && window.localStorage.getItem('hiddenRowIds') || '';
+  return hiddenIds.split('|');
+}
+
+
+export const isHiddenItem = currentObjId => {
+  const allHiddenItems = getAllHiddenItems() || [];
+  if(allHiddenItems.indexOf(currentObjId) === -1) {
+    return false;
+  }
+  return true;
+};
+
+export const updateHiddenItems = newItem => {
+  const hiddenIds = isClient() && window.localStorage && window.localStorage.getItem('hiddenRowIds');
+  const newList = hiddenIds ? `${hiddenIds}|${newItem}` : newItem;
+  isClient() && window.localStorage.setItem('hiddenRowIds', newList);
+};
 
 export default isClient;
