@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
-function isClient() {
-  return typeof window !== 'undefined';
-}
+import { isClient, getUpVoteCount, updateUpVoteCount } from '../../util';
 
 const getAllHiddenItems = () => {
   const hiddenIds = isClient() && window.localStorage.getItem('hiddenRowIds') || '';
@@ -17,7 +15,7 @@ const buttonStyle = {
 const arrowUpStyle = {
   'borderLeft': '5px solid transparent',
   'borderRight': '5px solid transparent',
-  'borderBottom': '10px solid black',
+  'borderBottom': '10px solid #999999',
   'width': '-11px',
   'height': 0,
   'display': 'inline-block'
@@ -40,35 +38,10 @@ class Cell extends Component {
     return true;
   };
 
-
-  getUpVoteCount = (objectID) => {
-    const upvoteCountList = isClient() && window.localStorage.getItem('upVoteCount') || '';
-    const upVoteCount = upvoteCountList.split(objectID);
-    let count = 0;
-    if(upVoteCount.length > 1 && upVoteCount[1][0] === '&') {
-      count = upVoteCount[1].split('|')[0].replace('&', '');
-    }
-    return count;
-  }
-
   updateHiddenItems = newItem => {
     const hiddenIds = isClient() && window.localStorage.getItem('hiddenRowIds');
     const newList = hiddenIds ? `${hiddenIds}|${newItem}` : newItem;
     isClient() && window.localStorage.setItem('hiddenRowIds', newList);
-  }
-
-  updateUpVoteCount = (objectId, newCount) => {
-    const upVoteCountList = isClient() && window.localStorage.getItem('upVoteCount');
-    const upVoteCount = this.getUpVoteCount(objectId);
-    console.log('upVoteCount', upVoteCount);
-    console.log('newCount', newCount);
-    let updatedUpVoteCountList;
-    if(upVoteCount) {
-      updatedUpVoteCountList = upVoteCountList.replace(`${objectId}&${upVoteCount}`, `${objectId}&${newCount}`);
-    } else {
-      updatedUpVoteCountList = `${upVoteCountList}|${objectId}&${newCount}`;
-    }
-    isClient() && window.localStorage.setItem('upVoteCount', updatedUpVoteCountList);
   }
 
   onClickHide = e => {
@@ -79,7 +52,7 @@ class Cell extends Component {
   handleUpvote = e => {
     const { upvoteCount } = this.state;
     const objectId = e.target && e.target.id && e.target.id.replace('vote_', '');
-    this.updateUpVoteCount(objectId, upvoteCount + 1);
+    updateUpVoteCount(objectId, upvoteCount + 1);
     this.setState({ upvoteCount: upvoteCount + 1 });
   };
 
@@ -87,7 +60,7 @@ class Cell extends Component {
     const { hit = {} } = this.props;
     const { objectID } = hit;
     const isHidden = this.isHiddenItem(objectID);
-    const upvoteCount = parseInt(this.getUpVoteCount(objectID));
+    const upvoteCount = parseInt(getUpVoteCount(objectID));
     this.setState({isHidden, upvoteCount});
   }
 
