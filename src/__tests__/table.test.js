@@ -9,5 +9,6 @@ describe('table component', () => {
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 }); 
