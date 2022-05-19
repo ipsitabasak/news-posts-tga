@@ -42,6 +42,7 @@ class Wrapper extends Component {
     const reqUrl = (req && req.url);
     if(!isClient() && reqUrl) {
       // comment added just for fun
+      // comment fun
       const apiUrl = `${CONSTANT_API_URL[reqUrl] || CONSTANT_API_URL['/']}0`;
       const ApiResponse = await fetch(apiUrl);
       const response = await ApiResponse.json();
