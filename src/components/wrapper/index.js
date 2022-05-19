@@ -60,6 +60,7 @@ class Wrapper extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    // hhhh
     if (isEqual(nextProps, this.props) && isEqual(nextState, this.state)) {
       return false;
     }
