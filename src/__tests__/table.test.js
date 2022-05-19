@@ -8,7 +8,6 @@ describe('table component', () => {
       <Table hits={[]} />,
     );
     let tree = component.toJSON();
-  // again change
     expect(tree).toMatchSnapshot();
   });
 }); 
